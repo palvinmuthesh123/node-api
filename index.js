@@ -24,6 +24,12 @@ app.get('/', async (req, res) => {
   }
 });
 
+
+app.get('/hello', function (req, res) {
+  console.log("Got a GET request for the homepage");
+  res.send('Hello GET');
+})
+
 app.listen(PORT, () => {
   console.log(`server started on port ${PORT}`);
 });
