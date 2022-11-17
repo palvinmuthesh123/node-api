@@ -37,7 +37,16 @@ const userOperation={
     },
     getUsers(res){
         userRef.once('value',function(snap){
-            res.status(200).json({"users":snap.val()});
+            var arr = [];
+            for(var i = 0; i<snap.val().length; i++)
+            {
+                if(snap.val()[i]!=null && snap.val()[i]!=undefined && snap.val()[i]!='')
+                {
+                    console.log(snap.val()[i])
+                    arr.push(snap.val()[i]);
+                }
+            }
+            res.status(200).json({"users":arr});
         })
     },
     getOneUser(obj,res){
